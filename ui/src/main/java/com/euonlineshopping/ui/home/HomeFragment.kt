@@ -12,7 +12,6 @@ import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.databinding.FragmentHomeBinding
 import com.euonlineshopping.ui.home.adapter.HomeProductsAdapter
 import com.euonlineshopping.ui.home.adapter.ProductsCallback
-import com.euonlineshopping.ui.productdetail.ProductDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -34,7 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             adapter = this@HomeFragment.productsAdapter
         }
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.screenState?.collect {
                 when (val state = it) {
                     is ProductsUiState.Content -> {

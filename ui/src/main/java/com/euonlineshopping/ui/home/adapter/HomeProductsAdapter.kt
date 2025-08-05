@@ -25,7 +25,7 @@ class HomeProductsAdapter(private val productsCallback: ProductsCallback) :
     }
 }
 
-private class HomeAdapterItemDiffCallBack : DiffUtil.ItemCallback<HomeProductUiModel>() {
+internal class HomeAdapterItemDiffCallBack : DiffUtil.ItemCallback<HomeProductUiModel>() {
 
     override fun areItemsTheSame(
         oldItem: HomeProductUiModel,

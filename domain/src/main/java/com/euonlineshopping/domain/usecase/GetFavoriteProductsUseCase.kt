@@ -2,16 +2,25 @@ package com.euonlineshopping.domain.usecase
 
 import com.euonlineshopping.data.datastore.FavoriteProductManager
 import com.euonlineshopping.domain.mapper.toUiModel
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.ProductsUiState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 class GetFavoriteProductsUseCase @Inject constructor(
     private val favoriteProductManager: FavoriteProductManager,
 ) {
-    operator fun invoke(): Flow<List<HomeProductUiModel>> =
-        favoriteProductManager.getFavoriteProducts().map { favoriteProductStrings ->
-            favoriteProductStrings.map { product -> product.toUiModel() }
-        }
+    operator fun invoke(): Flow<ProductsUiState> =
+        favoriteProductManager.getFavoriteProducts().map { favoriteProductsList ->
+            if (favoriteProductsList.isEmpty()) {
+                ProductsUiState.Empty
+            } else {
+                ProductsUiState.Content(favoriteProductsList.map { it.toUiModel() })
+            }
+        }.onStart {
+            emit(ProductsUiState.Loading)
+        }.flowOn(Dispatchers.IO)
 }

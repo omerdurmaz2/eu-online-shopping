@@ -19,7 +19,11 @@
         android:id="@+id/navigation_favorites"
         android:name="com.euonlineshopping.ui.favorites.FavoritesFragment"
         android:label="Favoriler"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_navigation_favorites_to_productDetail"
+            app:destination="@id/productDetail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cart"
