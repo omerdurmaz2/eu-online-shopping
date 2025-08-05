@@ -2,9 +2,11 @@ package com.euonlineshopping.ui.favorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.domain.usecase.GetFavoriteProductsUseCase
 import com.euonlineshopping.domain.usecase.GetProductsUseCase
+import com.euonlineshopping.domain.usecase.ToggleProductFavoriteStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
-    private val getFavoriteProductsUseCase: GetFavoriteProductsUseCase
+    private val getFavoriteProductsUseCase: GetFavoriteProductsUseCase,
+    private val toggleProductFavoriteStatusUseCase: ToggleProductFavoriteStatusUseCase
 ) : ViewModel() {
 
     private val _screenState = MutableStateFlow<ProductsUiState>(ProductsUiState.Loading)
@@ -28,6 +31,12 @@ class FavoritesViewModel @Inject constructor(
             getFavoriteProductsUseCase.invoke().collect {
                 _screenState.emit(it)
             }
+        }
+    }
+
+    fun toggleFavorite(product: HomeProductUiModel) {
+        viewModelScope.launch {
+            toggleProductFavoriteStatusUseCase.invoke(product)
         }
     }
 }

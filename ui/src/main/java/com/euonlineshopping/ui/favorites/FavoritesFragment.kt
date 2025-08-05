@@ -6,13 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.base.BaseFragment
 import com.euonlineshopping.ui.databinding.FragmentFavoritesBinding
 import com.euonlineshopping.ui.favorites.adapter.FavoriteProductsAdapter
-import com.euonlineshopping.ui.home.HomeFragmentDirections
 import com.euonlineshopping.ui.home.adapter.ProductsCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -66,8 +64,18 @@ class FavoritesFragment :
 
     private val productsCallbackListener = object : ProductsCallback {
         override fun navigateToDetail(product: HomeProductUiModel) {
-            val action = FavoritesFragmentDirections.actionNavigationFavoritesToProductDetail(product)
+            val action =
+                FavoritesFragmentDirections.actionNavigationFavoritesToProductDetail(product)
             findNavController().navigate(action)
+        }
+
+        override fun addToCart(product: HomeProductUiModel) {
+            super.addToCart(product)
+        }
+
+        override fun toggleFavorite(product: HomeProductUiModel) {
+            super.toggleFavorite(product)
+            viewModel.toggleFavorite(product)
         }
     }
 

@@ -23,4 +23,13 @@
             android:textColor="#000"
             tools:text="Hello worl" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="16dp"
+        android:src="@drawable/ic_favorite" />
 </RelativeLayout>

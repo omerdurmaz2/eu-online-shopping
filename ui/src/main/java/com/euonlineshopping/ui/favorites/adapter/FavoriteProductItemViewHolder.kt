@@ -19,5 +19,9 @@ class FavoriteProductItemViewHolder(
         binding.root.setOnClickListener {
             productsCallback.navigateToDetail(product)
         }
+
+        binding.ivFavorite.setOnClickListener {
+            productsCallback.toggleFavorite(product)
+        }
     }
 }
