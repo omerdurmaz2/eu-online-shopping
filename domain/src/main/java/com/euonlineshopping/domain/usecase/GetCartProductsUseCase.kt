@@ -16,35 +16,32 @@ class GetCartProductsUseCase @Inject constructor(
     private val cartManager: CartManager,
 ) {
     operator fun invoke(): Flow<CartUiState> {
-        return cartManager.getCartProducts()
-            .map { productList ->
-                if (productList.isEmpty()) {
-                    CartUiState.Empty
-                } else {
-                    val groupedProducts = productList.groupBy { it.id }
+        return cartManager.getCartProducts().map { productList ->
+            if (productList.isEmpty()) {
+                CartUiState.Empty
+            } else {
+                val groupedProducts = productList.groupBy { it.id }
 
-                    val cartProducts = groupedProducts.map { (id, products) ->
-                        val firstProduct = products.first()
-                        firstProduct.toUiModel()
-                    }
-
-                    val subtotal = cartProducts.sumOf { it.price * it.count }
-                    val discount = 0.0
-                    val total = subtotal - discount
-
-                    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale("tr", "TR"))
-
-                    CartUiState.Content(
-                        price = currencyFormatter.format(subtotal),
-                        discount = currencyFormatter.format(discount),
-                        total = currencyFormatter.format(total),
-                        products = cartProducts
-                    )
+                val cartProducts = groupedProducts.map { (id, products) ->
+                    val firstProduct = products.first()
+                    firstProduct.toUiModel()
                 }
+
+                val subtotal = cartProducts.sumOf { it.price * it.count }
+                val discount = 0.0
+                val total = subtotal - discount
+
+                val currencyFormatter = NumberFormat.getCurrencyInstance(Locale("tr", "TR"))
+
+                CartUiState.Content(
+                    price = currencyFormatter.format(subtotal),
+                    discount = currencyFormatter.format(discount),
+                    total = currencyFormatter.format(total),
+                    products = cartProducts
+                )
             }
-            .onStart {
-                emit(CartUiState.Loading)
-            }
-            .flowOn(Dispatchers.IO)
+        }.onStart {
+            emit(CartUiState.Loading)
+        }.flowOn(Dispatchers.IO)
     }
 }

@@ -64,12 +64,15 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
 
     private val productsCallbackListener = object : CartProductsCallback {
         override fun increaseCount(product: HomeProductUiModel) {
+            viewModel.increaseCount(product)
         }
 
         override fun decreaseCount(product: HomeProductUiModel) {
+            viewModel.decreaseCount(product)
         }
 
         override fun removeProduct(product: HomeProductUiModel) {
+            viewModel.removeProduct(product)
         }
 
         override fun navigateToDetail(product: HomeProductUiModel) {
