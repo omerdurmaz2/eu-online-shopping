@@ -2,6 +2,7 @@ package com.euonlineshopping.ui.favorites
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -73,9 +74,11 @@ class FavoritesFragment :
             super.toggleFavorite(product)
             viewModel.toggleFavorite(product)
         }
-    }
 
-    companion object {
-        fun newInstance() = FavoritesFragment()
+        override fun addToCart(product: HomeProductUiModel) {
+            super.addToCart(product)
+            viewModel.addToCart(product)
+            Toast.makeText(context, "Ürün sepete eklendi", Toast.LENGTH_SHORT).show()
+        }
     }
 }

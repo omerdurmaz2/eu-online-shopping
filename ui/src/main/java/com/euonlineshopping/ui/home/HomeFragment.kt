@@ -68,8 +68,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             findNavController().navigate(action)
         }
     }
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
 }

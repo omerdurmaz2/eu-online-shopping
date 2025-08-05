@@ -23,5 +23,9 @@ class FavoriteProductItemViewHolder(
         binding.ivFavorite.setOnClickListener {
             productsCallback.toggleFavorite(product)
         }
+
+        binding.ivAddToCart.setOnClickListener {
+            productsCallback.addToCart(product)
+        }
     }
 }
