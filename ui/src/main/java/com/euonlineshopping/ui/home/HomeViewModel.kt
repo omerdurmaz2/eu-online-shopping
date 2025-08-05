@@ -7,9 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val getProductsUseCase: GetProductsUseCase
+class HomeViewModel  constructor(
+    //private val getProductsUseCase: GetProductsUseCase
 ) : ViewModel() {
 
     private val sortBy: String? = null
@@ -17,7 +16,7 @@ class HomeViewModel @Inject constructor(
 
     fun getProducts() {
         viewModelScope.launch {
-            getProductsUseCase.invoke(sortBy, order)
+           // getProductsUseCase.invoke(sortBy, order)
         }
     }
 }

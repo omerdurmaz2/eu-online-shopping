@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="HomeFragment"
+        android:name="com.euonlineshopping.ui.home.HomeFragment"
         android:label="Ana Sayfa"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="FavoritesFragment"
+        android:name="com.euonlineshopping.ui.favorites.FavoritesFragment"
         android:label="Favoriler"
         tools:layout="@layout/fragment_favorites" />
 
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="CartFragment"
+        android:name="com.euonlineshopping.ui.cart.CartFragment"
         android:label="Sepet"
         tools:layout="@layout/fragment_cart" />
 

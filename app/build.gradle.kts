@@ -43,6 +43,8 @@ android {
 
 dependencies {
     implementation(project(":ui"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -54,6 +56,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     implementation(libs.hilt)
+    implementation(libs.androidx.hilt.common)
+
     ksp(libs.hiltAndroidCompiler)
 }

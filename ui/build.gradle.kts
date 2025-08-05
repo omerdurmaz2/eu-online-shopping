@@ -48,8 +48,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.hilt)
-    ksp(libs.hiltAndroidCompiler)
+    implementation(libs.androidx.hilt.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    ksp(libs.hiltAndroidCompiler)
 }

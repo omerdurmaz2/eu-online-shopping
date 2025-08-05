@@ -1,10 +1,10 @@
+package com.euonlineshopping.ui.favorites
+
+import com.euonlineshopping.ui.base.BaseFragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.euonlineshopping.ui.databinding.FragmentFavoritesBinding
-import com.euonlineshopping.ui.databinding.FragmentHomeBinding
-import com.euonlineshopping.ui.favorites.FavoritesViewModel
-import com.euonlineshopping.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

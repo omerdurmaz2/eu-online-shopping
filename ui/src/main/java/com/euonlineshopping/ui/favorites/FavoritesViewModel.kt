@@ -7,8 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class FavoritesViewModel @Inject constructor(
+class FavoritesViewModel  constructor(
 ) : ViewModel() {
 
 
