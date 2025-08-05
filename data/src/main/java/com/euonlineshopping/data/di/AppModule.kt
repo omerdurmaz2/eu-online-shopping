@@ -1,6 +1,7 @@
 package com.euonlineshopping.data.di
 
 import android.content.Context
+import com.euonlineshopping.data.datastore.CartManager
 import com.euonlineshopping.data.datastore.FavoriteProductManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -22,6 +23,16 @@ object AppModule {
         gson: Gson
     ): FavoriteProductManager {
         return FavoriteProductManager(context, gson)
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideCartManager(
+        @ApplicationContext context: Context,
+        gson: Gson
+    ): CartManager {
+        return CartManager(context, gson)
     }
 
     @Provides

@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.usecase.AddProductToCartUseCase
 import com.euonlineshopping.domain.usecase.GetFavoriteProductsUseCase
 import com.euonlineshopping.domain.usecase.GetProductFavoriteStatusUseCase
 import com.euonlineshopping.domain.usecase.ToggleProductFavoriteStatusUseCase
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class ProductDetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val toggleProductFavoriteStatusUseCase: ToggleProductFavoriteStatusUseCase,
-    private val getProductFavoriteStatusUseCase: GetProductFavoriteStatusUseCase
+    private val getProductFavoriteStatusUseCase: GetProductFavoriteStatusUseCase,
+    private val addProductToCartUseCase: AddProductToCartUseCase
 ) : ViewModel() {
 
     private val _product = MutableStateFlow<HomeProductUiModel?>(
@@ -41,6 +43,12 @@ class ProductDetailViewModel @Inject constructor(
             product.value?.let {
                 toggleProductFavoriteStatusUseCase.invoke(it)
             }
+        }
+    }
+
+    fun addToCart() {
+        viewModelScope.launch {
+            product.value?.let { addProductToCartUseCase.invoke(it) }
         }
     }
 }

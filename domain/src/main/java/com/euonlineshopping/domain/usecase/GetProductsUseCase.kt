@@ -21,7 +21,9 @@ class GetProductsUseCase @Inject constructor(
                     HomeProductUiModel(
                         id = product.id ?: 0,
                         title = product.title.orEmpty(),
-                        thumbnail = product.thumbnail.orEmpty()
+                        thumbnail = product.thumbnail.orEmpty(),
+                        price = product.price ?: 0.0,
+                        count = 1
                     )
                 }))
             } else {

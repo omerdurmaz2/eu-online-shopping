@@ -8,5 +8,7 @@ data class HomeProductUiModel(
     val isFavorite: Boolean = false,
     val thumbnail: String,
     val title: String,
-    val id: Int
+    val id: Int,
+    val price: Double,
+    val count: Int,
 ) : Parcelable

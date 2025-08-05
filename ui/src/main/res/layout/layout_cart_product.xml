@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,22 +23,4 @@
             android:textColor="#000"
             tools:text="Hello worl" />
     </LinearLayout>
-
-
-    <ImageView
-        android:id="@+id/ivFavorites"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:contentDescription="Favorite Button" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAddToCart"
-        android:layout_alignParentBottom="true"
-        android:text="Add to Cart"
-        android:layout_margin="16dp" />
 </RelativeLayout>

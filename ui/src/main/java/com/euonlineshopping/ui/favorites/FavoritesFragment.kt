@@ -69,10 +69,6 @@ class FavoritesFragment :
             findNavController().navigate(action)
         }
 
-        override fun addToCart(product: HomeProductUiModel) {
-            super.addToCart(product)
-        }
-
         override fun toggleFavorite(product: HomeProductUiModel) {
             super.toggleFavorite(product)
             viewModel.toggleFavorite(product)

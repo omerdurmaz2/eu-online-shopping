@@ -29,7 +29,11 @@
         android:id="@+id/navigation_cart"
         android:name="com.euonlineshopping.ui.cart.CartFragment"
         android:label="Sepet"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_navigation_cart_to_productDetail"
+            app:destination="@id/productDetail" />
+    </fragment>
 
     <fragment
         android:id="@+id/productDetail"

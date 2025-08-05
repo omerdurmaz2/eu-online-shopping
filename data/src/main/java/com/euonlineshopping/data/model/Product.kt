@@ -11,4 +11,6 @@ data class Product(
     val thumbnail: String? = null,
     @SerializedName("isFavorite")
     val isFavorite: Boolean? = null,
+    @SerializedName("price")
+    val price: Double? = null,
 )
