@@ -30,6 +30,10 @@ class CartProductViewHolder(
             productsCallback.increaseCount(product)
         }
 
+        binding.ivRemoveProduct.setOnClickListener {
+            productsCallback.removeProduct(product)
+        }
+
         binding.root.setOnClickListener {
             productsCallback.navigateToDetail(product)
         }

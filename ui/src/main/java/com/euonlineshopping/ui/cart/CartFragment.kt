@@ -25,37 +25,43 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productsAdapter = CartProductsAdapter(
-            productsCallback = productsCallbackListener
-        )
+        productsAdapter = CartProductsAdapter(productsCallback = productsCallbackListener)
+
         binding.rvCartProducts.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@CartFragment.productsAdapter
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.screenState?.collect {
+            viewModel.screenState.collect {
                 when (val state = it) {
                     is CartUiState.Content -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.rvCartProducts.visibility = View.VISIBLE
+                        binding.llError.visibility = View.GONE
+                        binding.llEmpty.visibility = View.GONE
                         productsAdapter?.submitList(state.products)
                     }
 
                     is CartUiState.Error -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llError.visibility = View.VISIBLE
+                        binding.rvCartProducts.visibility = View.GONE
+                        binding.llEmpty.visibility = View.GONE
                     }
 
                     CartUiState.Empty -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llEmpty.visibility = View.VISIBLE
+                        binding.rvCartProducts.visibility = View.GONE
+                        binding.llError.visibility = View.GONE
                     }
 
                     CartUiState.Loading -> {
                         binding.cpLoading.visibility = View.VISIBLE
                         binding.llError.visibility = View.GONE
                         binding.rvCartProducts.visibility = View.GONE
+                        binding.llEmpty.visibility = View.GONE
                     }
                 }
             }
