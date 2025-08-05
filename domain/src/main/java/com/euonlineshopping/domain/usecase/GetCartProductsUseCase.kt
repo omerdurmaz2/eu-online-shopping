@@ -24,7 +24,7 @@ class GetCartProductsUseCase @Inject constructor(
 
                 val cartProducts = groupedProducts.map { (id, products) ->
                     val firstProduct = products.first()
-                    firstProduct.toUiModel()
+                    firstProduct.toUiModel(products.size)
                 }
 
                 val subtotal = cartProducts.sumOf { it.price * it.count }

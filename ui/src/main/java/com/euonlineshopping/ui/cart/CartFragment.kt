@@ -32,12 +32,17 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
             adapter = this@CartFragment.productsAdapter
         }
 
+        binding.btnCheckout.setOnClickListener {
+            val action = CartFragmentDirections.actionNavigationCartToCheckoutFragment()
+            findNavController().navigate(action)
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.screenState.collect {
                 when (val state = it) {
                     is CartUiState.Content -> {
                         binding.cpLoading.visibility = View.GONE
-                        binding.rvCartProducts.visibility = View.VISIBLE
+                        binding.rlContent.visibility = View.VISIBLE
                         binding.llError.visibility = View.GONE
                         binding.llEmpty.visibility = View.GONE
                         productsAdapter?.submitList(state.products)
@@ -46,21 +51,21 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
                     is CartUiState.Error -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llError.visibility = View.VISIBLE
-                        binding.rvCartProducts.visibility = View.GONE
+                        binding.rlContent.visibility = View.GONE
                         binding.llEmpty.visibility = View.GONE
                     }
 
                     CartUiState.Empty -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llEmpty.visibility = View.VISIBLE
-                        binding.rvCartProducts.visibility = View.GONE
+                        binding.rlContent.visibility = View.GONE
                         binding.llError.visibility = View.GONE
                     }
 
                     CartUiState.Loading -> {
                         binding.cpLoading.visibility = View.VISIBLE
                         binding.llError.visibility = View.GONE
-                        binding.rvCartProducts.visibility = View.GONE
+                        binding.rlContent.visibility = View.GONE
                         binding.llEmpty.visibility = View.GONE
                     }
                 }
@@ -85,9 +90,5 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
             val action = CartFragmentDirections.actionNavigationCartToProductDetail(product)
             findNavController().navigate(action)
         }
-    }
-
-    companion object {
-        fun newInstance() = CartFragment()
     }
 }

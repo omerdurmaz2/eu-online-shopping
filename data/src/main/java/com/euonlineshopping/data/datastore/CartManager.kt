@@ -54,6 +54,12 @@ class CartManager @Inject constructor(
         }
     }
 
+    suspend fun clearCart() {
+        context.dataStore.edit { preferences ->
+            preferences[CART_PRODUCTS_KEY] = ""
+        }
+    }
+
     suspend fun removeOneProductFromCart(productId: Int) {
         context.dataStore.edit { preferences ->
             val cartJson = preferences[CART_PRODUCTS_KEY]

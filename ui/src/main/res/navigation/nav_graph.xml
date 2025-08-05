@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_navigation_cart_to_productDetail"
             app:destination="@id/productDetail" />
+        <action
+            android:id="@+id/action_navigation_cart_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
     </fragment>
 
     <fragment
@@ -44,4 +47,10 @@
             app:argType="com.euonlineshopping.domain.model.HomeProductUiModel"
             app:nullable="false" />
     </fragment>
+
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.euonlineshopping.ui.checkout.CheckoutFragment"
+        android:label="CheckoutFragment"
+        tools:layout="@layout/fragment_checkout" />
 </navigation>
