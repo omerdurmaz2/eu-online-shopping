@@ -2,12 +2,13 @@ package com.euonlineshopping.ui.cart
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.euonlineshopping.ui.base.BaseFragment
+import com.euonlineshopping.ui.databinding.FragmentCartBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CartFragment : Fragment(){
+class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
 
     private val viewModel: CartViewModel by viewModels()
 
