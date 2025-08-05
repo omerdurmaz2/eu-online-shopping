@@ -8,20 +8,20 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ProductService {
-    @GET("docs/products")
+    @GET("products")
     suspend fun getProducts(
         @Query("sortBy") sortBy: String?,
         @Query("order") order: String?,
     ): Response<ProductsResponse>
 
-    @GET("docs/products/search")
+    @GET("products/search")
     suspend fun searchProducts(
         @Query("q") searchTerm: String?,
         @Query("sortBy") sortBy: String?,
         @Query("order") order: String?,
     ): Response<ProductsResponse>
 
-    @GET("docs/products/category/{category}")
+    @GET("products/category/{category}")
     suspend fun getProductsByCategory(
         @Path("category") category: String,
         @Query("sortBy") sortBy: String?,
@@ -29,6 +29,6 @@ interface ProductService {
     ): Response<ProductsResponse>
 
 
-    @GET("docs/products/category-list")
+    @GET("products/category-list")
     suspend fun getCategoryList(): Response<Category>
 }

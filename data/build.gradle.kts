@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.gson)
     implementation(libs.hilt)
+    implementation(libs.androidx.datastore.core.android)
     ksp(libs.hiltAndroidCompiler)
     implementation(platform(libs.okhttpBom))
     implementation(libs.okhttpLogging)
@@ -51,4 +52,6 @@ dependencies {
     implementation(libs.converter.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation(libs.androidx.datastore.preferences)
+
 }

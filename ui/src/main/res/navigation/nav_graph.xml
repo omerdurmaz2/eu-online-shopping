@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.euonlineshopping.ui.home.HomeFragment"
         android:label="Ana Sayfa"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_productDetail"
+            app:destination="@id/productDetail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorites"
@@ -23,4 +27,13 @@
         android:label="Sepet"
         tools:layout="@layout/fragment_cart" />
 
+    <fragment
+        android:id="@+id/productDetail"
+        android:name="com.euonlineshopping.ui.productdetail.ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="key_product"
+            app:argType="com.euonlineshopping.domain.model.HomeProductUiModel"
+            app:nullable="false" />
+    </fragment>
 </navigation>

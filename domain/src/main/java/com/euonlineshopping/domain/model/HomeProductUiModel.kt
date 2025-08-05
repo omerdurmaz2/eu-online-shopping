@@ -1,6 +1,12 @@
 package com.euonlineshopping.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class HomeProductUiModel(
-    val name: String,
-    val id: String
-)
+    val isFavorite: Boolean = false,
+    val thumbnail: String,
+    val title: String,
+    val id: Int
+) : Parcelable

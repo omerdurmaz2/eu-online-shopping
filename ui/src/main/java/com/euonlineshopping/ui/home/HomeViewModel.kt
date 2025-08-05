@@ -2,8 +2,7 @@ package com.euonlineshopping.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.euonlineshopping.ProductsUiState
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.domain.usecase.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +25,7 @@ class HomeViewModel @Inject constructor(
         getProducts()
     }
 
-    fun getProducts() {
+    private fun getProducts() {
         viewModelScope.launch {
             getProductsUseCase.invoke(sortBy, order).collect {
                 _screenState.emit(it)

@@ -1,4 +1,4 @@
-package com.euonlineshopping.ui.home
+package com.euonlineshopping.ui.home.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,10 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutHomeProductBinding
 
-class HomeProductsAdapter :
+class HomeProductsAdapter(private val productsCallback: ProductsCallback) :
     ListAdapter<HomeProductUiModel, RecyclerView.ViewHolder>(HomeAdapterItemDiffCallBack()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HomeProductViewHolder(LayoutHomeProductBinding.inflate(LayoutInflater.from(parent.context)))
+        return HomeProductViewHolder(
+            binding = LayoutHomeProductBinding.inflate(LayoutInflater.from(parent.context)),
+            productsCallback = productsCallback
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

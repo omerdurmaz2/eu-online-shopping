@@ -67,11 +67,4 @@ object NetworkModule {
 
         return interceptor
     }
-
-    @JvmStatic
-    @Singleton
-    @Provides
-    fun provideDefaultGson(): Gson {
-        return GsonBuilder().setLenient().create()
-    }
 }

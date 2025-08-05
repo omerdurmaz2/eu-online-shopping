@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.euonlineshopping.ProductsUiState
+import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.databinding.FragmentHomeBinding
+import com.euonlineshopping.ui.home.adapter.HomeProductsAdapter
+import com.euonlineshopping.ui.home.adapter.ProductsCallback
+import com.euonlineshopping.ui.productdetail.ProductDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -23,14 +26,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productsAdapter = HomeProductsAdapter()
+        productsAdapter = HomeProductsAdapter(
+            productsCallback = productsCallbackListener
+        )
         binding.rvHomeProducts.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@HomeFragment.productsAdapter
         }
 
         lifecycleScope.launch {
-            viewModel.screenState.collect {
+            viewModel.screenState?.collect {
                 when (val state = it) {
                     is ProductsUiState.Content -> {
                         binding.cpLoading.visibility = View.GONE
@@ -56,7 +61,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 }
             }
         }
+    }
 
+    private val productsCallbackListener = object : ProductsCallback {
+        override fun navigateToDetail(product: HomeProductUiModel) {
+            val action = HomeFragmentDirections.actionNavigationHomeToProductDetail(product)
+            findNavController().navigate(action)
+        }
     }
 
     companion object {
