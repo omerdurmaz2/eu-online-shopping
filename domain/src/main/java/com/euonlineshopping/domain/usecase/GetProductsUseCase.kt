@@ -2,6 +2,7 @@ package com.euonlineshopping.domain.usecase
 
 import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.data.repository.ProductRepository
+import com.euonlineshopping.domain.mapper.toUiModel
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -18,13 +19,7 @@ class GetProductsUseCase @Inject constructor(
         productsRepository.getProducts(sortBy, order).onSuccess { response ->
             if (response.products.isNotEmpty()) {
                 emit(ProductsUiState.Content(response.products.map { product ->
-                    HomeProductUiModel(
-                        id = product.id ?: 0,
-                        title = product.title.orEmpty(),
-                        thumbnail = product.thumbnail.orEmpty(),
-                        price = product.price ?: 0.0,
-                        count = 1
-                    )
+                    product.toUiModel()
                 }))
             } else {
                 emit(ProductsUiState.Empty)

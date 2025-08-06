@@ -2,11 +2,13 @@ package com.euonlineshopping.ui.bottomsheet.filter
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Filter.FilterListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.euonlineshopping.domain.model.FilterItemUiModel
+import com.euonlineshopping.domain.model.FiltersUiState
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.base.BaseBottomSheet
@@ -27,6 +29,8 @@ class FilterBottomSheet :
     BaseBottomSheet<BottomSheetFilterBinding>(BottomSheetFilterBinding::inflate) {
 
     private val viewModel: FilterBottomSheetViewModel by viewModels()
+    var applyFilterCallback: ((String) -> Unit)? = null
+    var clearFilterCallback: (() -> Unit)? = null
 
     private var filtersAdapter: FiltersAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,29 +44,37 @@ class FilterBottomSheet :
             adapter = filtersAdapter
         }
 
+        binding.btnClearFilter.setOnClickListener {
+            clearFilterCallback?.invoke()
+            dismiss()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.screenState?.collect {
+            viewModel.screenState.collect {
                 when (val state = it) {
-                    is ProductsUiState.Content -> {
+                    is FiltersUiState.Content -> {
                         binding.cpLoading.visibility = View.GONE
-                        binding.rvHomeProducts.visibility = View.VISIBLE
-                        productsAdapter?.submitList(state.products)
+                        binding.llContent.visibility = View.VISIBLE
+                        filtersAdapter?.submitList(state.filters)
+                        if (state.filters.any { filter -> filter.isSelected }) {
+                            binding.btnClearFilter.visibility = View.VISIBLE
+                        }
                     }
 
-                    is ProductsUiState.Error -> {
+                    is FiltersUiState.Error -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llError.visibility = View.VISIBLE
                     }
 
-                    ProductsUiState.Empty -> {
+                    FiltersUiState.Empty -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llEmpty.visibility = View.VISIBLE
                     }
 
-                    ProductsUiState.Loading -> {
+                    FiltersUiState.Loading -> {
                         binding.cpLoading.visibility = View.VISIBLE
                         binding.llError.visibility = View.GONE
-                        binding.rvHomeProducts.visibility = View.GONE
+                        binding.llContent.visibility = View.GONE
                     }
                 }
             }
@@ -71,7 +83,26 @@ class FilterBottomSheet :
 
     private val filtersCallBack = object : FiltersCallBack {
         override fun onSelect(filter: FilterItemUiModel) {
-            TODO("Not yet implemented")
+            applyFilterCallback?.invoke(filter.id)
+            dismiss()
+        }
+    }
+
+    companion object {
+        const val SELECTED_FILTER = "SELECTED_FILTER"
+
+        fun newInstance(
+            selectedFilter: String?,
+            applyFilter: (String) -> Unit,
+            clearFilter: () -> Unit
+        ): FilterBottomSheet {
+            return FilterBottomSheet().apply {
+                arguments = Bundle().apply {
+                    putString(SELECTED_FILTER, selectedFilter)
+                }
+                applyFilterCallback = applyFilter
+                clearFilterCallback = clearFilter
+            }
         }
     }
 }

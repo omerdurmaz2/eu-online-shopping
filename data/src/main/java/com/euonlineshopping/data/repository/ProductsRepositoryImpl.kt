@@ -13,7 +13,15 @@ class ProductsRepositoryImpl @Inject constructor(private val service: ProductSer
             service.getProducts(sortBy, order)
         }
 
-    override suspend fun getFilterCategories(): Result<Category> = request {
+    override suspend fun getCategoryProducts(
+        category: String,
+        sortBy: String?,
+        order: String?
+    ): Result<ProductsResponse> = request {
+        service.getProductsByCategory(category, sortBy, order)
+    }
+
+    override suspend fun getFilterCategories(): Result<List<Category>> = request {
         service.getCategoryList()
     }
 }

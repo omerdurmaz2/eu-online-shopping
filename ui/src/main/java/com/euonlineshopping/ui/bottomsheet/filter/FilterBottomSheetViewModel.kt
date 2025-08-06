@@ -1,8 +1,13 @@
 package com.euonlineshopping.ui.bottomsheet.filter
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.euonlineshopping.domain.model.FiltersUiState
+import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.usecase.GetFilterCategoriesUseCase
+import com.euonlineshopping.ui.productdetail.ProductDetailFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -10,21 +15,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilterBottomSheetViewModel @Inject constructor() : ViewModel() {
+class FilterBottomSheetViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val getFilterCategoriesUseCase: GetFilterCategoriesUseCase
+) : ViewModel() {
 
-    private val _screenState = MutableStateFlow<ProductsUiState>(ProductsUiState.Loading)
+    private val _screenState = MutableStateFlow<FiltersUiState>(FiltersUiState.Loading)
     val screenState = _screenState.asStateFlow()
 
-    private val sortBy: String? = null
-    private val order: String? = null
+    private val selectedFilter by lazy { savedStateHandle.get<String?>(FilterBottomSheet.SELECTED_FILTER) }
 
     init {
-        getProducts()
+        getFilters()
     }
 
-    private fun getProducts() {
+    private fun getFilters() {
         viewModelScope.launch {
-            getProductsUseCase.invoke(sortBy, order).collect {
+            getFilterCategoriesUseCase.invoke(selectedFilter).collect {
                 _screenState.emit(it)
             }
         }

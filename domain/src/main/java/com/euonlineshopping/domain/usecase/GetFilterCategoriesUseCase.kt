@@ -1,11 +1,10 @@
 package com.euonlineshopping.domain.usecase
 
-import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.data.repository.ProductRepository
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.FilterItemUiModel
+import com.euonlineshopping.domain.model.FiltersUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
@@ -14,23 +13,21 @@ import javax.inject.Inject
 class GetFilterCategoriesUseCase @Inject constructor(
     private val productsRepository: ProductRepository
 ) {
-    operator fun invoke(sortBy: String?, order: String?): Flow<ProductsUiState> = flow {
+    operator fun invoke(selectedFilter: String?): Flow<FiltersUiState> = flow {
         productsRepository.getFilterCategories().onSuccess { response ->
             if (response.isNotEmpty()) {
-                emit(ProductsUiState.Content(response.products.map { product ->
-                    HomeProductUiModel(
-                        id = product.id ?: 0,
-                        title = product.title.orEmpty(),
-                        thumbnail = product.thumbnail.orEmpty(),
-                        price = product.price ?: 0.0,
-                        count = 1
+                emit(FiltersUiState.Content(response.map { filter ->
+                    FilterItemUiModel(
+                        id = filter.slug.orEmpty(),
+                        name = filter.name.orEmpty(),
+                        isSelected = filter.slug == selectedFilter
                     )
                 }))
             } else {
-                emit(ProductsUiState.Empty)
+                emit(FiltersUiState.Empty)
             }
         }.onFailure {
-            emit(ProductsUiState.Error(""))
+            emit(FiltersUiState.Error(""))
         }
-    }.onStart { emit(ProductsUiState.Loading) }.flowOn(Dispatchers.IO)
+    }.onStart { emit(FiltersUiState.Loading) }.flowOn(Dispatchers.IO)
 }

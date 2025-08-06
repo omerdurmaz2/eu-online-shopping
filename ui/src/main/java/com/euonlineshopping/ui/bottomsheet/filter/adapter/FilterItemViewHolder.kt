@@ -1,5 +1,6 @@
 package com.euonlineshopping.ui.bottomsheet.filter.adapter
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.euonlineshopping.domain.model.FilterItemUiModel
@@ -16,6 +17,7 @@ class FilterItemViewHolder(
 
     fun bind(filter: FilterItemUiModel) {
         binding.tvFilterItem.text = filter.name
+        if (filter.isSelected) binding.ivSelectedCheck.visibility = View.VISIBLE
 
         binding.root.setOnClickListener {
             filtersCallBack.onSelect(filter)

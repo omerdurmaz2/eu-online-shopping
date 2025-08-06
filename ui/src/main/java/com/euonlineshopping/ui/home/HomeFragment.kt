@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.ui.bottomsheet.filter.FilterBottomSheet
 import com.euonlineshopping.ui.databinding.FragmentHomeBinding
 import com.euonlineshopping.ui.home.adapter.HomeProductsAdapter
 import com.euonlineshopping.ui.home.adapter.ProductsCallback
@@ -31,6 +32,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.rvHomeProducts.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@HomeFragment.productsAdapter
+        }
+
+        binding.btnFilter.setOnClickListener {
+            val filtersBottomSheet = FilterBottomSheet.newInstance(
+                selectedFilter = viewModel.selectedCategory,
+                applyFilter = {
+                    viewModel.filterProducts(it)
+                }, clearFilter = {
+                    viewModel.clearFilter()
+                }
+            )
+
+            filtersBottomSheet.show(childFragmentManager, filtersBottomSheet.tag)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

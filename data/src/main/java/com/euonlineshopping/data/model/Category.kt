@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Category(
     @SerializedName("slug")
-    val slug: Int? = null,
+    val slug: String? = null,
     @SerializedName("name")
     val name: String? = null,
 )
