@@ -22,5 +22,12 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             tools:text="Hello worl" />
+
+        <TextView
+            android:id="@+id/tvProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            tools:text="Hello worl" />
     </LinearLayout>
 </RelativeLayout>

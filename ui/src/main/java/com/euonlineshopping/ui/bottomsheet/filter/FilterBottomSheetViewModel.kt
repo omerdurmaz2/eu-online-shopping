@@ -23,7 +23,7 @@ class FilterBottomSheetViewModel @Inject constructor(
     private val _screenState = MutableStateFlow<FiltersUiState>(FiltersUiState.Loading)
     val screenState = _screenState.asStateFlow()
 
-    private val selectedFilter by lazy { savedStateHandle.get<String?>(FilterBottomSheet.SELECTED_FILTER) }
+    val selectedFilter by lazy { savedStateHandle.get<String?>(FilterBottomSheet.SELECTED_FILTER) }
 
     init {
         getFilters()

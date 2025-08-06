@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.bottomsheet.filter.FilterBottomSheet
+import com.euonlineshopping.ui.bottomsheet.sort.SortBottomSheet
 import com.euonlineshopping.ui.databinding.FragmentHomeBinding
 import com.euonlineshopping.ui.home.adapter.HomeProductsAdapter
 import com.euonlineshopping.ui.home.adapter.ProductsCallback
@@ -47,8 +48,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             filtersBottomSheet.show(childFragmentManager, filtersBottomSheet.tag)
         }
 
+        binding.btnSort.setOnClickListener {
+            val sortOptionsBottomSheet = SortBottomSheet.newInstance(
+                selectedSortOption = viewModel.selectedSortOption,
+                applySort = {
+                    viewModel.applySort(it)
+                },
+                clearSort = {
+                    viewModel.clearSort()
+                }
+            )
+
+            sortOptionsBottomSheet.show(childFragmentManager, sortOptionsBottomSheet.tag)
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.screenState?.collect {
+            viewModel.screenState.collect {
                 when (val state = it) {
                     is ProductsUiState.Content -> {
                         binding.cpLoading.visibility = View.GONE

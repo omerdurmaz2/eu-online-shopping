@@ -2,27 +2,17 @@ package com.euonlineshopping.ui.bottomsheet.filter
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Filter.FilterListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.euonlineshopping.domain.model.FilterItemUiModel
 import com.euonlineshopping.domain.model.FiltersUiState
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.base.BaseBottomSheet
 import com.euonlineshopping.ui.bottomsheet.filter.adapter.FiltersAdapter
 import com.euonlineshopping.ui.bottomsheet.filter.adapter.FiltersCallBack
 import com.euonlineshopping.ui.databinding.BottomSheetFilterBinding
-import com.euonlineshopping.ui.home.HomeFragment
-import com.euonlineshopping.ui.home.HomeFragmentDirections
-import com.euonlineshopping.ui.home.HomeViewModel
-import com.euonlineshopping.ui.home.adapter.HomeProductsAdapter
-import com.euonlineshopping.ui.home.adapter.ProductsCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlin.getValue
 
 @AndroidEntryPoint
 class FilterBottomSheet :
@@ -56,9 +46,7 @@ class FilterBottomSheet :
                         binding.cpLoading.visibility = View.GONE
                         binding.llContent.visibility = View.VISIBLE
                         filtersAdapter?.submitList(state.filters)
-                        if (state.filters.any { filter -> filter.isSelected }) {
-                            binding.btnClearFilter.visibility = View.VISIBLE
-                        }
+
                     }
 
                     is FiltersUiState.Error -> {
@@ -78,6 +66,10 @@ class FilterBottomSheet :
                     }
                 }
             }
+        }
+
+        if (viewModel.selectedFilter.isNullOrEmpty().not()) {
+            binding.btnClearFilter.visibility = View.VISIBLE
         }
     }
 

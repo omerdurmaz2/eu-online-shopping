@@ -14,6 +14,7 @@ class HomeProductViewHolder(
     fun bind(product: HomeProductUiModel) {
         Glide.with(itemView.context).load(product.thumbnail).into(binding.ivThumbnail)
         binding.tvProductName.text = product.title
+        binding.tvProductPrice.text = product.price.toString()
 
         binding.root.setOnClickListener {
             productsCallback.navigateToDetail(product)

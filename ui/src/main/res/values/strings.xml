@@ -1,4 +1,9 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="sort_option_price_asc">Fiyat artan</string>
+    <string name="sort_option_price_desc">Fiyat azalan</string>
+    <string name="sort_option_title_asc">Başlık A-Z</string>
+    <string name="sort_option_title_desc">Başlık Z-A</string>
 </resources>

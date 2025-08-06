@@ -1,4 +1,4 @@
-package com.euonlineshopping.ui.bottomsheet.filter.adapter
+package com.euonlineshopping.ui.bottomsheet.sort.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.euonlineshopping.domain.model.FilterItemUiModel
+import com.euonlineshopping.domain.model.SortOptionUiModel
 import com.euonlineshopping.ui.databinding.LayoutFilterItemBinding
 
-class FiltersAdapter(private val filtersCallBack: FiltersCallBack) :
-    ListAdapter<FilterItemUiModel, RecyclerView.ViewHolder>(FiltersAdapterItemDiffCallBack()) {
+class SortOptionsAdapter(private val filtersCallBack: SortOptionsCallBack) :
+    ListAdapter<SortOptionUiModel, RecyclerView.ViewHolder>(SortOptionAdapterItemDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return FilterItemViewHolder(
+        return SortItemViewHolder(
             binding = LayoutFilterItemBinding.inflate(LayoutInflater.from(parent.context)),
             filtersCallBack = filtersCallBack
         )
@@ -21,20 +21,20 @@ class FiltersAdapter(private val filtersCallBack: FiltersCallBack) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val product = getItem(position)
-        (holder as? FilterItemViewHolder)?.bind(product)
+        (holder as? SortItemViewHolder)?.bind(product)
     }
 }
 
-internal class FiltersAdapterItemDiffCallBack : DiffUtil.ItemCallback<FilterItemUiModel>() {
+internal class SortOptionAdapterItemDiffCallBack : DiffUtil.ItemCallback<SortOptionUiModel>() {
 
     override fun areItemsTheSame(
-        oldItem: FilterItemUiModel,
-        newItem: FilterItemUiModel
+        oldItem: SortOptionUiModel,
+        newItem: SortOptionUiModel
     ): Boolean = oldItem.id == newItem.id
 
     @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(
-        oldItem: FilterItemUiModel,
-        newItem: FilterItemUiModel
+        oldItem: SortOptionUiModel,
+        newItem: SortOptionUiModel
     ): Boolean = oldItem == newItem
 }
