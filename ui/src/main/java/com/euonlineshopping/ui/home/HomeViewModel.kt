@@ -6,6 +6,7 @@ import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.domain.model.SortOptionUiModel
 import com.euonlineshopping.domain.usecase.GetCategoryProductsUseCase
 import com.euonlineshopping.domain.usecase.GetProductsUseCase
+import com.euonlineshopping.domain.usecase.SearchProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
-    private val getCategoryProductsUseCase: GetCategoryProductsUseCase
+    private val getCategoryProductsUseCase: GetCategoryProductsUseCase,
+    private val searchProductsUseCase: SearchProductsUseCase,
 ) : ViewModel() {
 
     private val _screenState = MutableStateFlow<ProductsUiState>(ProductsUiState.Loading)
@@ -27,14 +29,14 @@ class HomeViewModel @Inject constructor(
     var selectedSortOption: SortOptionUiModel? = null
         private set
 
-    private val sortBy: String? = null
-    private val order: String? = null
+    var searchTerm: String? = null
+        private set
 
     init {
         getProducts()
     }
 
-    private fun getProducts() {
+    fun getProducts() {
         viewModelScope.launch {
             getProductsUseCase.invoke(selectedSortOption?.sortBy, selectedSortOption?.order)
                 .collect {
@@ -64,15 +66,34 @@ class HomeViewModel @Inject constructor(
     fun applySort(sortOption: SortOptionUiModel) {
         selectedSortOption = sortOption
 
-        if (selectedCategory.isNullOrEmpty()) {
-            getProducts()
-        } else {
+        if (selectedCategory.isNullOrEmpty().not()) {
             filterProducts(selectedCategory.orEmpty())
+        } else if (searchTerm.isNullOrEmpty().not()) {
+            searchProduct(searchTerm.orEmpty())
+        } else {
+            getProducts()
         }
     }
 
     fun clearSort() {
         selectedSortOption = null
         getProducts()
+    }
+
+    fun searchProduct(searchTerm: String) {
+        this.searchTerm = searchTerm
+        viewModelScope.launch {
+            searchProductsUseCase.invoke(
+                searchTerm,
+                selectedSortOption?.sortBy,
+                selectedSortOption?.order
+            ).collect {
+                _screenState.emit(it)
+            }
+        }
+    }
+
+    fun clearSearchTerms() {
+        searchTerm = null
     }
 }

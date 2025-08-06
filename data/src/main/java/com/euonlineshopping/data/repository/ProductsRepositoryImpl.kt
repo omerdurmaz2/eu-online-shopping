@@ -21,7 +21,17 @@ class ProductsRepositoryImpl @Inject constructor(private val service: ProductSer
         service.getProductsByCategory(category, sortBy, order)
     }
 
+    override suspend fun searchProducts(
+        searchTerm: String,
+        sortBy: String?,
+        order: String?
+    ): Result<ProductsResponse> = request {
+        service.searchProducts(searchTerm, sortBy, order)
+    }
+
     override suspend fun getFilterCategories(): Result<List<Category>> = request {
         service.getCategoryList()
     }
+
+
 }

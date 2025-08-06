@@ -3,6 +3,8 @@ package com.euonlineshopping.ui.home
 import com.euonlineshopping.ui.base.BaseFragment
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -39,6 +41,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             val filtersBottomSheet = FilterBottomSheet.newInstance(
                 selectedFilter = viewModel.selectedCategory,
                 applyFilter = {
+                    binding.editTextSearch.editableText.clear()
+                    binding.editTextSearch.clearFocus()
+                    viewModel.clearSearchTerms()
                     viewModel.filterProducts(it)
                 }, clearFilter = {
                     viewModel.clearFilter()
@@ -60,6 +65,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             )
 
             sortOptionsBottomSheet.show(childFragmentManager, sortOptionsBottomSheet.tag)
+        }
+
+        binding.textInputLayout.setEndIconOnClickListener {
+            val searchText = binding.editTextSearch.text.toString()
+
+            viewModel.searchProduct(searchText)
+        }
+
+        binding.editTextSearch.setOnEditorActionListener { textView, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val searchText = textView.text.toString()
+                viewModel.searchProduct(searchText)
+                true
+            } else {
+                false
+            }
+        }
+
+        binding.editTextSearch.doOnTextChanged { text, start, before, count ->
+            if (viewModel.searchTerm.isNullOrEmpty().not() && text.toString().isEmpty()) {
+                viewModel.clearSort()
+                viewModel.clearFilter()
+                viewModel.getProducts()
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

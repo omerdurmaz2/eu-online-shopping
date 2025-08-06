@@ -11,5 +11,12 @@ interface ProductRepository {
         order: String?
     ): Result<ProductsResponse>
 
+    suspend fun searchProducts(
+        searchTerm: String,
+        sortBy: String?,
+        order: String?
+    ): Result<ProductsResponse>
+
     suspend fun getFilterCategories(): Result<List<Category>>
+
 }
