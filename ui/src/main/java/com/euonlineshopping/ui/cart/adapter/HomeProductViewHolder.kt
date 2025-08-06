@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutCartProductBinding
 import com.euonlineshopping.ui.databinding.LayoutHomeProductBinding
+import com.euonlineshopping.ui.util.calculateDiscountedPrice
 
 class CartProductViewHolder(
     private val binding: LayoutCartProductBinding,
@@ -15,10 +16,12 @@ class CartProductViewHolder(
     fun bind(product: HomeProductUiModel) {
         Glide.with(itemView.context).load(product.thumbnail).into(binding.ivThumbnail)
         binding.tvProductName.text = product.title
-        binding.tvPrice.text = "${product.price} ₺"
+        binding.tvOriginalPrice.text = "${product.price} ₺"
+        binding.tvDiscountedPrice.text =
+            "${product.price.calculateDiscountedPrice(product.discountPercentage)} ₺"
         binding.tvProductCount.text = product.count.toString()
 
-        binding.btnDescraseCount.setOnClickListener {
+        binding.btnDescreaseCount.setOnClickListener {
             if (product.count == 1) {
                 productsCallback.removeProduct(product)
             } else {
@@ -30,7 +33,7 @@ class CartProductViewHolder(
             productsCallback.increaseCount(product)
         }
 
-        binding.ivRemoveProduct.setOnClickListener {
+        binding.btnRemoveProduct.setOnClickListener {
             productsCallback.removeProduct(product)
         }
 

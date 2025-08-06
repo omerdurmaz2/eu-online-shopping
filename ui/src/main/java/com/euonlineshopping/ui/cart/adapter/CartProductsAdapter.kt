@@ -16,7 +16,11 @@ class CartProductsAdapter(private val productsCallback: CartProductsCallback) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CartProductViewHolder(
-            binding = LayoutCartProductBinding.inflate(LayoutInflater.from(parent.context)),
+            binding = LayoutCartProductBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             productsCallback = productsCallback
         )
     }
