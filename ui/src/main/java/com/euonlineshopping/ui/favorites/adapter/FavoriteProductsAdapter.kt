@@ -14,7 +14,11 @@ class FavoriteProductsAdapter(private val productsCallback: ProductsCallback) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FavoriteProductItemViewHolder(
-            binding = LayoutFavoritesProductBinding.inflate(LayoutInflater.from(parent.context)),
+            binding = LayoutFavoritesProductBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             productsCallback = productsCallback
         )
     }

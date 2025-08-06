@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutFavoritesProductBinding
 import com.euonlineshopping.ui.home.adapter.ProductsCallback
+import com.euonlineshopping.ui.util.calculateDiscountedPrice
 
 class FavoriteProductItemViewHolder(
     private val binding: LayoutFavoritesProductBinding,
@@ -15,6 +16,9 @@ class FavoriteProductItemViewHolder(
     fun bind(product: HomeProductUiModel) {
         Glide.with(itemView.context).load(product.thumbnail).into(binding.ivThumbnail)
         binding.tvProductName.text = product.title
+        binding.tvProductPrice.text =
+            product.price.calculateDiscountedPrice(product.discountPercentage).toString()
+        binding.tvProductDescription.text = product.description
 
         binding.root.setOnClickListener {
             productsCallback.navigateToDetail(product)
