@@ -1,6 +1,7 @@
 package com.euonlineshopping.data.repository
 
 import com.euonlineshopping.data.base.BaseRepository
+import com.euonlineshopping.data.model.Category
 import com.euonlineshopping.data.model.ProductsResponse
 import com.euonlineshopping.data.service.ProductService
 import javax.inject.Inject
@@ -11,4 +12,8 @@ class ProductsRepositoryImpl @Inject constructor(private val service: ProductSer
         request {
             service.getProducts(sortBy, order)
         }
+
+    override suspend fun getFilterCategories(): Result<Category> = request {
+        service.getCategoryList()
+    }
 }
