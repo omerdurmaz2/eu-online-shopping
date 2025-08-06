@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".home.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +18,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ürünler"
+            android:text="@string/home_title"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,10 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="(Toplam 568 adet)"
             android:textColor="#A0A0A0"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title"
-            app:layout_constraintStart_toEndOf="@id/tv_title" />
+            app:layout_constraintStart_toEndOf="@id/tv_title"
+            tools:text="(Toplam 568 adet)" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
@@ -42,8 +40,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Search Product"
-            app:endIconContentDescription="Search"
+            android:hint="@string/home_search_hint"
+            app:endIconContentDescription="@string/home_search_content_description"
             app:endIconDrawable="@drawable/ic_search"
             app:endIconMode="custom"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Filter"
+            android:text="@string/home_filter_button"
             app:icon="@drawable/ic_filter"
             app:layout_constraintBaseline_toBaselineOf="@id/text_input_layout"
             app:layout_constraintEnd_toStartOf="@id/btn_sort"
@@ -77,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Sort"
+            android:text="@string/home_sort_button"
             app:icon="@drawable/ic_sort"
             app:layout_constraintBaseline_toBaselineOf="@id/text_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +118,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hic urun bulunamadi" />
+            android:text="@string/home_empty" />
     </LinearLayout>
 
     <LinearLayout
@@ -134,13 +132,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Urunler yuklenirken bir hata olustu" />
-
+            android:text="@string/home_error" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tekrar dene" />
+            android:text="@string/home_retry" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

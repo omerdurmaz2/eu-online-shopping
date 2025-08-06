@@ -1,9 +1,50 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="sort_option_price_asc">Fiyat artan</string>
     <string name="sort_option_price_desc">Fiyat azalan</string>
     <string name="sort_option_title_asc">Başlık A-Z</string>
     <string name="sort_option_title_desc">Başlık Z-A</string>
+
+    <string name="filter_bottomsheet_categories">Kategoriler</string>
+    <string name="filter_bottomsheet_reset">Sıfırla</string>
+    <string name="filter_bottomsheet_no_filters_found">Hiç filtre bulunamadı</string>
+    <string name="filter_bottomsheet_filter_error">Filtreler yüklenirken bir hata oluştu</string>
+    <string name="filter_bottomsheet_retry">Tekrar dene</string>
+
+    <string name="sort_bottomsheet_title">Sırala</string>
+    <string name="sort_bottomsheet_reset">Sıfırla</string>
+
+    <string name="cart_fragment_checkout">Ödeme Yap</string>
+    <string name="cart_fragment_empty_cart">Sepette hiç ürün yok</string>
+    <string name="cart_fragment_error">Sepet yüklenirken bir hata oluştu</string>
+    <string name="cart_fragment_retry">Tekrar dene</string>
+
+    <string name="checkout_toolbar_title">Ödeme</string>
+    <string name="checkout_name_hint">Ad Soyad</string>
+    <string name="checkout_email_hint">E-posta</string>
+    <string name="checkout_phone_hint">Telefon</string>
+    <string name="checkout_pay_button">Ödeme Yap</string>
+
+    <string name="favorites_fragment_empty">Favorilerde hiç ürün bulunamadı</string>
+    <string name="favorites_fragment_error">Favoriler yüklenirken bir hata oluştu</string>
+    <string name="favorites_fragment_retry">Tekrar dene</string>
+
+
+    <string name="home_title">Ürünler</string>
+    <string name="home_product_count_placeholder">(Toplam %1$d adet)</string>
+    <string name="home_search_hint">Ürün Ara</string>
+    <string name="home_search_content_description">Ara</string>
+    <string name="home_filter_button">Filtrele</string>
+    <string name="home_sort_button">Sırala</string>
+    <string name="home_empty">Hiç ürün bulunamadı</string>
+    <string name="home_error">Ürünler yüklenirken bir hata oluştu</string>
+    <string name="home_retry">Tekrar dene</string>
+
+    <string name="product_detail_add_to_cart">Sepete Ekle</string>
+    <string name="product_detail_favorite_description">Favorilere Ekle</string>
+    <string name="product_detail_product_image_description">Ürün Görseli</string>
+    <string name="product_detail_page_indicator_description">Sayfa Göstergesi</string>
+    <string name="product_detail_discount_placeholder">%1$d%%</string>
+    <string name="product_detail_product_name_placeholder">Macbook Pro</string>
+    <string name="product_detail_original_price_placeholder">%1$.2f TL</string>
+    <string name="product_detail_discounted_price_placeholder">%1$.2f TL</string>
 </resources>

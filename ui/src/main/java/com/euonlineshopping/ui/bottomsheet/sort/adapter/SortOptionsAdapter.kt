@@ -14,7 +14,11 @@ class SortOptionsAdapter(private val filtersCallBack: SortOptionsCallBack) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SortItemViewHolder(
-            binding = LayoutFilterItemBinding.inflate(LayoutInflater.from(parent.context)),
+            binding = LayoutFilterItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             filtersCallBack = filtersCallBack
         )
     }

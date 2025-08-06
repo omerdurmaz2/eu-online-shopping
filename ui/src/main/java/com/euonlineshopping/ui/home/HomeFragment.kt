@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.euonlineshopping.domain.model.HomeProductUiModel
 import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.ui.R
 import com.euonlineshopping.ui.bottomsheet.filter.FilterBottomSheet
 import com.euonlineshopping.ui.bottomsheet.sort.SortBottomSheet
 import com.euonlineshopping.ui.databinding.FragmentHomeBinding
@@ -98,7 +99,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         binding.cpLoading.visibility = View.GONE
                         binding.rvHomeProducts.visibility = View.VISIBLE
                         productsAdapter?.submitList(state.products)
-                        binding.tvProductCount.text = "(Toplam ${state.productCount}) adet"
+                        binding.tvProductCount.text =
+                            getString(R.string.home_product_count_placeholder, state.productCount)
                     }
 
                     is ProductsUiState.Error -> {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="sort_option_price_asc">Price ascending</string>
+        <string name="sort_option_price_desc">Price descending</string>
+        <string name="sort_option_title_asc">Title A-Z</string>
+        <string name="sort_option_title_desc">Title Z-A</string>
+
+        <string name="filter_bottomsheet_categories">Categories</string>
+        <string name="filter_bottomsheet_reset">Reset</string>
+        <string name="filter_bottomsheet_no_filters_found">No filters found</string>
+        <string name="filter_bottomsheet_filter_error">An error occurred while loading filters</string>
+        <string name="filter_bottomsheet_retry">Try again</string>
+
+        <string name="sort_bottomsheet_title">Sort</string>
+        <string name="sort_bottomsheet_reset">Reset</string>
+
+        <string name="cart_fragment_checkout">Checkout</string>
+        <string name="cart_fragment_empty_cart">No products in cart</string>
+        <string name="cart_fragment_error">An error occurred while loading cart</string>
+        <string name="cart_fragment_retry">Try again</string>
+
+        <string name="checkout_toolbar_title">Checkout</string>
+        <string name="checkout_name_hint">Name Surname</string>
+        <string name="checkout_email_hint">Email</string>
+        <string name="checkout_phone_hint">Phone</string>
+        <string name="checkout_pay_button">Pay</string>
+
+        <string name="favorites_fragment_empty">No products found in favorites</string>
+        <string name="favorites_fragment_error">An error occurred while loading favorites</string>
+        <string name="favorites_fragment_retry">Try again</string>
+
+        <string name="home_title">Products</string>
+        <string name="home_product_count_placeholder">(Total %1$d items)</string>
+        <string name="home_search_hint">Search Product</string>
+        <string name="home_search_content_description">Search</string>
+        <string name="home_filter_button">Filter</string>
+        <string name="home_sort_button">Sort</string>
+        <string name="home_empty">No products found</string>
+        <string name="home_error">An error occurred while loading products</string>
+        <string name="home_retry">Try again</string>
+
+        <string name="product_detail_add_to_cart">Add to Cart</string>
+        <string name="product_detail_favorite_description">Add to Favorites</string>
+        <string name="product_detail_product_image_description">Product Image</string>
+        <string name="product_detail_page_indicator_description">Page Indicator</string>
+        <string name="product_detail_discount_placeholder">%1$d%%</string>
+        <string name="product_detail_product_name_placeholder">Macbook Pro</string>
+        <string name="product_detail_original_price_placeholder">%1$.2f TL</string>
+        <string name="product_detail_discounted_price_placeholder">%1$.2f TL</string>
+</resources>

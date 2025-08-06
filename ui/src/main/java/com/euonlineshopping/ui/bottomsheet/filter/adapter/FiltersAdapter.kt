@@ -14,7 +14,11 @@ class FiltersAdapter(private val filtersCallBack: FiltersCallBack) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FilterItemViewHolder(
-            binding = LayoutFilterItemBinding.inflate(LayoutInflater.from(parent.context)),
+            binding = LayoutFilterItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             filtersCallBack = filtersCallBack
         )
     }
