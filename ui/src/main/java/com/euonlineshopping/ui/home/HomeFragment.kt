@@ -98,6 +98,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         binding.cpLoading.visibility = View.GONE
                         binding.rvHomeProducts.visibility = View.VISIBLE
                         productsAdapter?.submitList(state.products)
+                        binding.tvProductCount.text = "(Toplam ${state.productCount}) adet"
                     }
 
                     is ProductsUiState.Error -> {

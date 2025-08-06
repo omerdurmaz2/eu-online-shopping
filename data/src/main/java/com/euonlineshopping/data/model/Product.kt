@@ -7,10 +7,14 @@ data class Product(
     val id: Int? = null,
     @SerializedName("title")
     val title: String? = null,
+    @SerializedName("description")
+    val description: String? = null,
     @SerializedName("thumbnail")
     val thumbnail: String? = null,
     @SerializedName("isFavorite")
     val isFavorite: Boolean? = null,
     @SerializedName("price")
     val price: Double? = null,
+    @SerializedName("discountPercentage")
+    val discountPercentage: Double? = null,
 )

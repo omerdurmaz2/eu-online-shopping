@@ -18,7 +18,10 @@ class GetFavoriteProductsUseCase @Inject constructor(
             if (favoriteProductsList.isEmpty()) {
                 ProductsUiState.Empty
             } else {
-                ProductsUiState.Content(favoriteProductsList.map { it.toUiModel() })
+                ProductsUiState.Content(
+                    favoriteProductsList.map { it.toUiModel() },
+                    productCount = favoriteProductsList.size
+                )
             }
         }.onStart {
             emit(ProductsUiState.Loading)

@@ -15,13 +15,17 @@ import javax.inject.Inject
 class SearchProductsUseCase @Inject constructor(
     private val productsRepository: ProductRepository
 ) {
-    operator fun invoke(searchTerm: String, sortBy: String?, order: String?): Flow<ProductsUiState> =
+    operator fun invoke(
+        searchTerm: String,
+        sortBy: String?,
+        order: String?
+    ): Flow<ProductsUiState> =
         flow {
             productsRepository.searchProducts(searchTerm, sortBy, order).onSuccess { response ->
                 if (response.products.isNotEmpty()) {
                     emit(ProductsUiState.Content(response.products.map { product ->
                         product.toUiModel()
-                    }))
+                    }, productCount = response.total))
                 } else {
                     emit(ProductsUiState.Empty)
                 }

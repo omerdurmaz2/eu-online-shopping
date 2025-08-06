@@ -21,7 +21,7 @@ class GetCategoryProductsUseCase @Inject constructor(
                 if (response.products.isNotEmpty()) {
                     emit(ProductsUiState.Content(response.products.map { product ->
                         product.toUiModel()
-                    }))
+                    }, productCount = response.total))
                 } else {
                     emit(ProductsUiState.Empty)
                 }

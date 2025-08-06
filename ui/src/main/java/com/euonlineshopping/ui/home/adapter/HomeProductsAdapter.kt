@@ -14,7 +14,11 @@ class HomeProductsAdapter(private val productsCallback: ProductsCallback) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return HomeProductViewHolder(
-            binding = LayoutHomeProductBinding.inflate(LayoutInflater.from(parent.context)),
+            binding = LayoutHomeProductBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             productsCallback = productsCallback
         )
     }
