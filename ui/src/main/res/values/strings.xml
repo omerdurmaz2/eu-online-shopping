@@ -1,4 +1,13 @@
 <resources>
+    <string name="nav_home">Ana Sayfa</string>
+    <string name="nav_favorites">Favoriler</string>
+    <string name="nav_cart">Sepet</string>
+    <string name="nav_checkout">Ödeme</string>
+
+    <string name="menu_home">Ana Sayfa</string>
+    <string name="menu_favorites">Favoriler</string>
+    <string name="menu_cart">Sepet</string>
+
     <string name="sort_option_price_asc">Fiyat artan</string>
     <string name="sort_option_price_desc">Fiyat azalan</string>
     <string name="sort_option_title_asc">Başlık A-Z</string>

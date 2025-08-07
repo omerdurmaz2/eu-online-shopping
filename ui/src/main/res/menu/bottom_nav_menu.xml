@@ -4,15 +4,15 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Ana Sayfa" />
+        android:title="@string/menu_home" />
 
     <item
         android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorites"
-        android:title="Favoriler" />
+        android:title="@string/menu_favorites" />
 
     <item
         android:id="@+id/navigation_cart"
         android:icon="@drawable/ic_cart"
-        android:title="Sepet" />
+        android:title="@string/menu_cart" />
 </menu>

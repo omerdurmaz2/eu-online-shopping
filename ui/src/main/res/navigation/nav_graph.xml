@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.euonlineshopping.ui.home.HomeFragment"
-        android:label="Ana Sayfa"
+        android:label="@string/nav_home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_productDetail"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/navigation_favorites"
         android:name="com.euonlineshopping.ui.favorites.FavoritesFragment"
-        android:label="Favoriler"
+        android:label="@string/nav_favorites"
         tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_navigation_favorites_to_productDetail"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.euonlineshopping.ui.cart.CartFragment"
-        android:label="Sepet"
+        android:label="@string/nav_cart"
         tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_navigation_cart_to_productDetail"
@@ -51,6 +51,6 @@
     <fragment
         android:id="@+id/checkoutFragment"
         android:name="com.euonlineshopping.ui.checkout.CheckoutFragment"
-        android:label="CheckoutFragment"
+        android:label="@string/nav_checkout"
         tools:layout="@layout/fragment_checkout" />
 </navigation>

@@ -27,9 +27,39 @@ class CheckoutFragment : BaseFragment<FragmentCheckoutBinding>(FragmentCheckoutB
         binding.toolbar.setupWithNavController(findNavController())
 
         binding.btnPay.setOnClickListener {
-            viewModel.pay()
-            Toast.makeText(context, "Satın alma başarılı", Toast.LENGTH_SHORT).show()
-            findNavController().popBackStack()
+            if (validateForm()) {
+                viewModel.pay()
+                Toast.makeText(context, "Satın alma başarılı", Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack()
+            }
         }
+
+    }
+
+    private fun validateForm(): Boolean {
+        var isFormValid = true
+
+        if (binding.etName.text.isNullOrBlank()) {
+            binding.tilName.error = "Ad Soyad alanı boş bırakılamaz"
+            isFormValid = false
+        } else {
+            binding.tilName.error = null
+        }
+
+        if (binding.etEmail.text.isNullOrBlank()) {
+            binding.tilEmail.error = "E-posta alanı boş bırakılamaz"
+            isFormValid = false
+        } else {
+            binding.tilEmail.error = null
+        }
+
+        if (binding.etPhone.text.isNullOrBlank()) {
+            binding.tilPhone.error = "Telefon alanı boş bırakılamaz"
+            isFormValid = false
+        } else {
+            binding.tilPhone.error = null
+        }
+
+        return isFormValid
     }
 }
