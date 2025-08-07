@@ -11,6 +11,8 @@ import com.euonlineshopping.ui.base.BaseBottomSheet
 import com.euonlineshopping.ui.bottomsheet.filter.adapter.FiltersAdapter
 import com.euonlineshopping.ui.bottomsheet.filter.adapter.FiltersCallBack
 import com.euonlineshopping.ui.databinding.BottomSheetFilterBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -25,6 +27,22 @@ class FilterBottomSheet :
     private var filtersAdapter: FiltersAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (dialog is BottomSheetDialog) {
+            val bottomSheetDialog = dialog as BottomSheetDialog
+            val bottomSheet = bottomSheetDialog.findViewById<View>(
+                com.google.android.material.R.id.design_bottom_sheet
+            )
+
+            if (bottomSheet != null) {
+                val behavior = BottomSheetBehavior.from(bottomSheet)
+
+                behavior.isFitToContents = false
+                behavior.halfExpandedRatio = 0.6f
+
+                behavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            }
+        }
 
         filtersAdapter = FiltersAdapter(
             filtersCallBack = filtersCallBack

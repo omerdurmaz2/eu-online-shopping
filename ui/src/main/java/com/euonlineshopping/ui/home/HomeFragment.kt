@@ -106,11 +106,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     is ProductsUiState.Error -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llError.visibility = View.VISIBLE
+                        binding.tvProductCount.text =
+                            getString(R.string.home_product_count_placeholder, 0)
                     }
 
                     ProductsUiState.Empty -> {
                         binding.cpLoading.visibility = View.GONE
                         binding.llEmpty.visibility = View.VISIBLE
+                        binding.tvProductCount.text =
+                            getString(R.string.home_product_count_placeholder, 0)
                     }
 
                     ProductsUiState.Loading -> {
