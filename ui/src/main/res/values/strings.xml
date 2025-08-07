@@ -56,4 +56,9 @@
     <string name="product_detail_product_name_placeholder">Macbook Pro</string>
     <string name="product_detail_original_price_placeholder">%1$.2f TL</string>
     <string name="product_detail_discounted_price_placeholder">%1$.2f TL</string>
+
+    <string name="checkout_success_message">Satın alma başarılı</string>
+    <string name="checkout_name_error">Ad Soyad alanı boş bırakılamaz</string>
+    <string name="checkout_email_error">E-posta alanı boş bırakılamaz</string>
+    <string name="checkout_phone_error">Telefon alanı boş bırakılamaz</string>
 </resources>

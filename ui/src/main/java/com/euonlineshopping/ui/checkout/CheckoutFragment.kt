@@ -1,6 +1,5 @@
 package com.euonlineshopping.ui.checkout
 
-import com.euonlineshopping.ui.base.BaseFragment
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.euonlineshopping.ui.R
+import com.euonlineshopping.ui.base.BaseFragment
 import com.euonlineshopping.ui.databinding.FragmentCheckoutBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,32 +30,35 @@ class CheckoutFragment : BaseFragment<FragmentCheckoutBinding>(FragmentCheckoutB
         binding.btnPay.setOnClickListener {
             if (validateForm()) {
                 viewModel.pay()
-                Toast.makeText(context, "Satın alma başarılı", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    getString(R.string.checkout_success_message),
+                    Toast.LENGTH_SHORT
+                ).show()
                 findNavController().popBackStack()
             }
         }
-
     }
 
     private fun validateForm(): Boolean {
         var isFormValid = true
 
         if (binding.etName.text.isNullOrBlank()) {
-            binding.tilName.error = "Ad Soyad alanı boş bırakılamaz"
+            binding.tilName.error = getString(R.string.checkout_name_error)
             isFormValid = false
         } else {
             binding.tilName.error = null
         }
 
         if (binding.etEmail.text.isNullOrBlank()) {
-            binding.tilEmail.error = "E-posta alanı boş bırakılamaz"
+            binding.tilEmail.error = getString(R.string.checkout_email_error)
             isFormValid = false
         } else {
             binding.tilEmail.error = null
         }
 
         if (binding.etPhone.text.isNullOrBlank()) {
-            binding.tilPhone.error = "Telefon alanı boş bırakılamaz"
+            binding.tilPhone.error = getString(R.string.checkout_phone_error)
             isFormValid = false
         } else {
             binding.tilPhone.error = null

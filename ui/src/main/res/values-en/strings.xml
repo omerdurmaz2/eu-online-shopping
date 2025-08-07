@@ -56,4 +56,9 @@
     <string name="product_detail_product_name_placeholder">Macbook Pro</string>
     <string name="product_detail_original_price_placeholder">%1$.2f TL</string>
     <string name="product_detail_discounted_price_placeholder">%1$.2f TL</string>
+
+    <string name="checkout_success_message">Purchase successful</string>
+    <string name="checkout_name_error">Name field cannot be left blank</string>
+    <string name="checkout_email_error">Email field cannot be left blank</string>
+    <string name="checkout_phone_error">Phone field cannot be left blank</string>
 </resources>
