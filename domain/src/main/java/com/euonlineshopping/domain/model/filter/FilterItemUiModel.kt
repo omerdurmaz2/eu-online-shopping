@@ -1,4 +1,4 @@
-package com.euonlineshopping.domain.model
+package com.euonlineshopping.domain.model.filter
 
 data class FilterItemUiModel(
     val id: String,

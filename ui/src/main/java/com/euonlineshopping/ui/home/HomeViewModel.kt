@@ -2,8 +2,8 @@ package com.euonlineshopping.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.euonlineshopping.domain.model.ProductsUiState
-import com.euonlineshopping.domain.model.SortOptionUiModel
+import com.euonlineshopping.domain.model.home.ProductsUiState
+import com.euonlineshopping.domain.model.sort.SortOptionUiModel
 import com.euonlineshopping.domain.usecase.GetCategoryProductsUseCase
 import com.euonlineshopping.domain.usecase.GetProductsUseCase
 import com.euonlineshopping.domain.usecase.SearchProductsUseCase

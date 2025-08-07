@@ -3,7 +3,7 @@ package com.euonlineshopping.ui.home.adapter
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutHomeProductBinding
 import com.euonlineshopping.ui.util.calculateDiscountedPrice
 

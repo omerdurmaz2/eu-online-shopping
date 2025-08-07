@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.euonlineshopping.domain.model.FilterItemUiModel
+import com.euonlineshopping.domain.model.filter.FilterItemUiModel
 import com.euonlineshopping.ui.databinding.LayoutFilterItemBinding
 
 class FiltersAdapter(private val filtersCallBack: FiltersCallBack) :

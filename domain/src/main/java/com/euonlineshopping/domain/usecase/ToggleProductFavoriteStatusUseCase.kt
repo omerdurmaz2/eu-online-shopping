@@ -2,7 +2,7 @@ package com.euonlineshopping.domain.usecase
 
 import com.euonlineshopping.data.datastore.FavoriteProductManager
 import com.euonlineshopping.domain.mapper.toApiModel
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import javax.inject.Inject
 
 class ToggleProductFavoriteStatusUseCase @Inject constructor(

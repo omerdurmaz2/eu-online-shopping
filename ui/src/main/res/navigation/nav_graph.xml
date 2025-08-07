@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="key_product"
-            app:argType="com.euonlineshopping.domain.model.HomeProductUiModel"
+            app:argType="com.euonlineshopping.domain.model.home.HomeProductUiModel"
             app:nullable="false" />
     </fragment>
 

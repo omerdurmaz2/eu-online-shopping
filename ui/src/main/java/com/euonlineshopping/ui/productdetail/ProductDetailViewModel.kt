@@ -3,9 +3,8 @@ package com.euonlineshopping.ui.productdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.domain.usecase.AddProductToCartUseCase
-import com.euonlineshopping.domain.usecase.GetFavoriteProductsUseCase
 import com.euonlineshopping.domain.usecase.GetProductFavoriteStatusUseCase
 import com.euonlineshopping.domain.usecase.ToggleProductFavoriteStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,12 +1,10 @@
 package com.euonlineshopping.domain.usecase
 
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.home.ProductsUiState
 import com.euonlineshopping.data.repository.ProductRepository
 import com.euonlineshopping.domain.mapper.toUiModel
-import com.euonlineshopping.domain.model.HomeProductUiModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart

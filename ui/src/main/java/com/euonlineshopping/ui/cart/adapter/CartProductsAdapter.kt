@@ -1,14 +1,11 @@
 package com.euonlineshopping.ui.cart.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutCartProductBinding
-import com.euonlineshopping.ui.databinding.LayoutHomeProductBinding
 import com.euonlineshopping.ui.home.adapter.HomeAdapterItemDiffCallBack
 
 class CartProductsAdapter(private val productsCallback: CartProductsCallback) :

@@ -1,4 +1,6 @@
-package com.euonlineshopping.domain.model
+package com.euonlineshopping.domain.model.cart
+
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 
 sealed class CartUiState {
     data object Loading : CartUiState()

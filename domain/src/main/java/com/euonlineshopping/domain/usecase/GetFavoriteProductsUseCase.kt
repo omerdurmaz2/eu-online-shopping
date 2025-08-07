@@ -2,7 +2,7 @@ package com.euonlineshopping.domain.usecase
 
 import com.euonlineshopping.data.datastore.FavoriteProductManager
 import com.euonlineshopping.domain.mapper.toUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.home.ProductsUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn

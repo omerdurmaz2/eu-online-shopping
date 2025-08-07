@@ -2,11 +2,10 @@ package com.euonlineshopping.ui.favorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.ProductsUiState
 import com.euonlineshopping.domain.usecase.AddProductToCartUseCase
 import com.euonlineshopping.domain.usecase.GetFavoriteProductsUseCase
-import com.euonlineshopping.domain.usecase.GetProductsUseCase
 import com.euonlineshopping.domain.usecase.ToggleProductFavoriteStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -2,13 +2,11 @@ package com.euonlineshopping.ui.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.euonlineshopping.domain.model.CartUiState
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.cart.CartUiState
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.domain.usecase.AddProductToCartUseCase
 import com.euonlineshopping.domain.usecase.ClearProductFromCartUseCase
 import com.euonlineshopping.domain.usecase.GetCartProductsUseCase
-import com.euonlineshopping.domain.usecase.GetProductsUseCase
 import com.euonlineshopping.domain.usecase.RemoveOneProductFromCartUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

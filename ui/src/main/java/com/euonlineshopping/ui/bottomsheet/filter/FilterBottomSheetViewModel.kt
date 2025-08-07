@@ -3,11 +3,8 @@ package com.euonlineshopping.ui.bottomsheet.filter
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.euonlineshopping.domain.model.FiltersUiState
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.filter.FiltersUiState
 import com.euonlineshopping.domain.usecase.GetFilterCategoriesUseCase
-import com.euonlineshopping.ui.productdetail.ProductDetailFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

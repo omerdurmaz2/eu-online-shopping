@@ -6,18 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
 import com.euonlineshopping.ui.databinding.FragmentCheckoutBinding
-import com.euonlineshopping.ui.databinding.FragmentHomeBinding
-import com.euonlineshopping.ui.home.adapter.HomeProductsAdapter
-import com.euonlineshopping.ui.home.adapter.ProductsCallback
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CheckoutFragment : BaseFragment<FragmentCheckoutBinding>(FragmentCheckoutBinding::inflate) {

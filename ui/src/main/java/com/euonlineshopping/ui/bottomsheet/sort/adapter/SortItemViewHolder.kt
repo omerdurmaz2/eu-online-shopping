@@ -2,7 +2,7 @@ package com.euonlineshopping.ui.bottomsheet.sort.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.euonlineshopping.domain.model.SortOptionUiModel
+import com.euonlineshopping.domain.model.sort.SortOptionUiModel
 import com.euonlineshopping.ui.databinding.LayoutFilterItemBinding
 
 class SortItemViewHolder(

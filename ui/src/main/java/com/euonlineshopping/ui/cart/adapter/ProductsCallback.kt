@@ -1,6 +1,6 @@
 package com.euonlineshopping.ui.cart.adapter
 
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 
 interface CartProductsCallback {
     fun increaseCount(product: HomeProductUiModel)

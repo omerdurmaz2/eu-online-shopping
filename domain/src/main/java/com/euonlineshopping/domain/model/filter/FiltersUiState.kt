@@ -1,4 +1,4 @@
-package com.euonlineshopping.domain.model
+package com.euonlineshopping.domain.model.filter
 
 sealed class FiltersUiState {
     data object Loading : FiltersUiState()

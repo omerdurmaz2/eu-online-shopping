@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.euonlineshopping.domain.model.FilterItemUiModel
-import com.euonlineshopping.domain.model.FiltersUiState
+import com.euonlineshopping.domain.model.filter.FilterItemUiModel
+import com.euonlineshopping.domain.model.filter.FiltersUiState
 import com.euonlineshopping.ui.base.BaseBottomSheet
 import com.euonlineshopping.ui.bottomsheet.filter.adapter.FiltersAdapter
 import com.euonlineshopping.ui.bottomsheet.filter.adapter.FiltersCallBack

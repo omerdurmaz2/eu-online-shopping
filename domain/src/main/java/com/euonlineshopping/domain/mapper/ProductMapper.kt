@@ -1,7 +1,7 @@
 package com.euonlineshopping.domain.mapper
 
 import com.euonlineshopping.data.model.Product
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 
 internal fun Product.toUiModel(count: Int = 1): HomeProductUiModel {
     return HomeProductUiModel(

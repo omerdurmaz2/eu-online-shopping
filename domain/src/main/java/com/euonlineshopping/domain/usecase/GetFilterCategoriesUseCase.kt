@@ -1,8 +1,8 @@
 package com.euonlineshopping.domain.usecase
 
 import com.euonlineshopping.data.repository.ProductRepository
-import com.euonlineshopping.domain.model.FilterItemUiModel
-import com.euonlineshopping.domain.model.FiltersUiState
+import com.euonlineshopping.domain.model.filter.FilterItemUiModel
+import com.euonlineshopping.domain.model.filter.FiltersUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

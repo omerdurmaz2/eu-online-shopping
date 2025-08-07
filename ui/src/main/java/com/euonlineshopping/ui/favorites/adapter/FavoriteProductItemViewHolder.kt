@@ -2,7 +2,7 @@ package com.euonlineshopping.ui.favorites.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutFavoritesProductBinding
 import com.euonlineshopping.ui.home.adapter.ProductsCallback
 import com.euonlineshopping.ui.util.calculateDiscountedPrice

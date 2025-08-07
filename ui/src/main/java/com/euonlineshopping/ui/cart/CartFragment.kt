@@ -6,13 +6,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.euonlineshopping.domain.model.CartUiState
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.cart.CartUiState
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.ui.base.BaseFragment
 import com.euonlineshopping.ui.cart.adapter.CartProductsAdapter
 import com.euonlineshopping.ui.cart.adapter.CartProductsCallback
 import com.euonlineshopping.ui.databinding.FragmentCartBinding
-import com.euonlineshopping.ui.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

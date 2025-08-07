@@ -9,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.ProductsUiState
 import com.euonlineshopping.ui.R
 import com.euonlineshopping.ui.bottomsheet.filter.FilterBottomSheet
 import com.euonlineshopping.ui.bottomsheet.sort.SortBottomSheet

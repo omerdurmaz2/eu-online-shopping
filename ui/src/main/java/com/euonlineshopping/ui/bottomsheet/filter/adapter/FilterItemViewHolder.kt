@@ -2,7 +2,7 @@ package com.euonlineshopping.ui.bottomsheet.filter.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.euonlineshopping.domain.model.FilterItemUiModel
+import com.euonlineshopping.domain.model.filter.FilterItemUiModel
 import com.euonlineshopping.ui.databinding.LayoutFilterItemBinding
 
 class FilterItemViewHolder(

@@ -1,4 +1,4 @@
-package com.euonlineshopping.domain.model
+package com.euonlineshopping.domain.model.home
 
 sealed class ProductsUiState {
     data object Loading : ProductsUiState()

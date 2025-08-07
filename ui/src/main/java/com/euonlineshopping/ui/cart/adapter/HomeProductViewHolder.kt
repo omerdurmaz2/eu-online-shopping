@@ -2,9 +2,8 @@ package com.euonlineshopping.ui.cart.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.euonlineshopping.domain.model.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
 import com.euonlineshopping.ui.databinding.LayoutCartProductBinding
-import com.euonlineshopping.ui.databinding.LayoutHomeProductBinding
 import com.euonlineshopping.ui.util.calculateDiscountedPrice
 
 class CartProductViewHolder(

@@ -1,4 +1,4 @@
-package com.euonlineshopping.domain.model
+package com.euonlineshopping.domain.model.home
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

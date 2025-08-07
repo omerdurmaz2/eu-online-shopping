@@ -7,8 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.euonlineshopping.domain.model.HomeProductUiModel
-import com.euonlineshopping.domain.model.ProductsUiState
+import com.euonlineshopping.domain.model.home.HomeProductUiModel
+import com.euonlineshopping.domain.model.home.ProductsUiState
 import com.euonlineshopping.ui.base.BaseFragment
 import com.euonlineshopping.ui.databinding.FragmentFavoritesBinding
 import com.euonlineshopping.ui.favorites.adapter.FavoriteProductsAdapter

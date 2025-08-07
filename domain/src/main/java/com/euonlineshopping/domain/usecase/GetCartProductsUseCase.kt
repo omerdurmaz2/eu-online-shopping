@@ -2,7 +2,7 @@ package com.euonlineshopping.domain.usecase
 
 import com.euonlineshopping.data.datastore.CartManager
 import com.euonlineshopping.domain.mapper.toUiModel
-import com.euonlineshopping.domain.model.CartUiState
+import com.euonlineshopping.domain.model.cart.CartUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
